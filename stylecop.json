@@ -1,0 +1,12 @@
+{
+    "settings": {
+      "fileNaming": {
+        "allowedFileExtensions": [".cs"]
+      },
+      "indentation": {
+        "tabSize": 4,
+        "useTabs": false
+      }
+    }
+  }
+  

@@ -1,0 +1,12 @@
+# EditorConfig for VS Code and others
+
+# Top-most EditorConfig file
+root = true
+
+# C# files
+[*.cs]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+insert_final_newline = true

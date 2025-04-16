@@ -1,0 +1,43 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest  
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2
+
+    - name: Set up .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0'
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Run StyleCop Analyzers
+      run: dotnet build --no-restore --configuration Release
+
+    - name: Build Project
+      run: dotnet build --configuration Release
+
+    - name: Run Unit Tests
+      run: dotnet test
+
+    - name: Generate Documentation
+      run: doxygen Doxyfile
+
+    - name: Upload Documentation
+      uses: actions/upload-artifact@v2
+      with:
+        name: documentation
+        path: ./doc
